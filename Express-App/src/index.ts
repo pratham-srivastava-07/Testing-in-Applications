@@ -14,4 +14,3 @@ app.post("/sum", (req, res)=>{
     })
 })
 
-app.listen(5000);
