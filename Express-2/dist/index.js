@@ -15,7 +15,7 @@ const ProdInput = zod_1.z.object({
 exports.app.post("/sum", (req, res) => {
     const response = ProdInput.safeParse(req.body);
     if (!response.success) {
-        return res.status(403).json({
+        return res.status(411).json({
             message: "failed"
         });
     }
