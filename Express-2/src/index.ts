@@ -1,6 +1,7 @@
 import {z} from "zod"
 
 import express from "express"
+import {prismaClient} from "./db"
 
 export const app = express();
 
@@ -11,7 +12,7 @@ const ProdInput = z.object({
     b: z.number()
 })
 
-app.post("/sum", (req, res)=> {
+app.post("/sum", async(req, res)=> {
     const response = ProdInput.safeParse(req.body);
 
     if(!response.success) {
@@ -20,6 +21,14 @@ app.post("/sum", (req, res)=> {
         })
     }
     const ans = response.data.a * response.data.b
+
+    await prismaClient.sum.create({
+       data: {
+        a: response.data.a,
+        b: response.data.b,
+        result: ans
+       }
+    })
 
     res.json({
         ans

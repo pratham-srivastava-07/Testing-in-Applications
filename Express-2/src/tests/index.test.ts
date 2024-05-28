@@ -1,9 +1,13 @@
 import {app} from "../index"
 
-import {describe, it, expect} from "@jest/globals" // for vitest just replace "@jest/globals" with "vitest"
+import {describe, it, expect, vi} from "vitest" // for vitest just replace "@jest/globals" with "vitest"
 
 import  request  from "supertest"
 
+
+vi.mock('../db', ()=> ({
+    prismaClient: {sum: {create: vi.fn()}}
+}))
 
 describe("POST /sum", ()=> {
     it("should return product", async ()=> {
