@@ -5,9 +5,8 @@ import {describe, it, expect, vi} from "vitest" // for vitest just replace "@jes
 import  request  from "supertest"
 
 
-vi.mock('../db', ()=> ({
-    prismaClient: {sum: {create: vi.fn()}}
-}))
+vi.mock('../db');
+
 
 describe("POST /sum", ()=> {
     it("should return product", async ()=> {
