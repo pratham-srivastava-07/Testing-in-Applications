@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
+import { mockDeep, mockReset } from 'vitest-mock-extended'
 
-export const prismaClient = new PrismaClient();
+export const prismaClient = mockDeep<PrismaClient>();
 
 console.log(
     Object.keys(prismaClient)
