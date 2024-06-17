@@ -13,6 +13,7 @@
   "dependencies": {
     "@prisma/client": "^5.15.0",
     "@types/express": "^4.17.21",
+    "chmod": "^0.2.1",
     "express": "^4.19.2",
     "prisma": "^5.15.0",
     "vitest": "^1.6.0"
